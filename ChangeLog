@@ -1,0 +1,5 @@
+0.51 -- Well, I had to cope with version 0.21 of Tie::Cache::LRU.
+        I require this module to use it now.
+
+0.50 -- Initial version
+

@@ -1,12 +1,11 @@
 package Tie::Cache::LRU::Expires;
 
 use strict;
-#use Tie::Cache::LRU::LinkedList;
-use Tie::Cache::LRU;
+use Tie::Cache::LRU 0.21;
 
 use vars qw($VERSION);
 
-$VERSION="1.0";
+$VERSION="0.51";
 
 sub TIEHASH {
   my $class = shift;
