@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-BEGIN { $| = 1; print "1..6\n"; } 
+BEGIN { $| = 1; print "1..7\n"; } 
 
 print "test 1: using the module.\n";
 
@@ -171,3 +171,14 @@ else {
 
 print "entries in LRU cache:",$cache_obj->lru_size(),"\n";
 
+print "clearing LRU cache..\n";
+
+%cache = ();
+
+if (keys %cache == 0) {
+	print "ok 7\n";
+} else {
+	print "not ok 7\n";
+}
+
+print "entries in LRU cache:",$cache_obj->lru_size(),"\n";
