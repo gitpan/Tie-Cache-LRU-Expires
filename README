@@ -1,0 +1,56 @@
+
+Tie::Cache::LRU::Expires - An expiring LRU cache.
+
+SYNOPSIS
+
+	use Tie::Cache::LRU::Expires;
+
+	tie %cache, 'Tie::Cache::LRU::Expires', EXPIRES => 10, ENTRIES => 1000;
+        $cache_obj = tied %cache;
+
+        for(1..1000) {
+           $cache{$_}="test $_";
+        }
+        sleep 4;
+        for(1000..1500) {
+           $cache{$_}="test $_";
+        }
+        
+        print $cache_obj->lru_size(),"\n";		# access to the
+							# number of entries
+							# used in the LRU
+							# cache.
+
+        sleep 4;
+	for(1..10) { print $cache{$_},"\n"; }
+	for(1100..1110) { print $cache{$_},"\n"; }
+        sleep 4;
+	for(1..10) { print $cache{$_},"\n"; }    	# expired (undefs).
+	for(1100..1110) { print $cache{$_},"\n"; }
+        sleep 4;
+	for(1100..1110) { print $cache{$_},"\n"; }	# now also expired.
+
+DESCRIPTION
+
+This is an expiring LRU cache, using Tie::Cache::LRU. Each entry
+in this cache expires after 'EXPIRES' seconds (default 3600). The
+cache is in RAM (see Tie::Cache::LRU). ENTRIES provides the maximum
+number of entries in the Tie::Cache::LRU cache.
+
+It works by checking if a cached entry hasn't expired. If it has,
+undef is returned, otherwise it's value. If the entry wasn't cached,
+undef is also returned (of course). Expired entries will eventually
+drop of the LRU; or, if referenced will (as can be expected, otherwise
+they wouldn't be referenced) be refreshed.
+
+NB! If entries keep being referenced and are expired, but never refreshed,
+they will never leave the LRU!
+
+USAGE
+
+See SYNOPSIS. Too simple to explain.
+
+AUTHOR
+
+Hans Dijkema <hans@oesterholt-dijkema.emailt.nl>
+
