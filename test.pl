@@ -1,13 +1,5 @@
 #!/usr/bin/perl
 
-#INC_PART
-use lib "/prj/dsnew/perlmods/lib/site_perl/current";
-use lib "/prj/dsnew/perlmods/lib/site_perl/current/aix";
-use lib "/prj/dsnew/perlmods/lib/current";
-
-use lib "./lib";
-use lib "./blib/lib";
-
 BEGIN { $| = 1; print "1..6\n"; } 
 
 print "test 1: using the module.\n";

@@ -5,7 +5,7 @@ use Tie::Cache::LRU 0.21;
 
 use vars qw($VERSION);
 
-$VERSION="0.52";
+$VERSION="0.53";
 
 sub TIEHASH {
   my $class = shift;
@@ -104,7 +104,7 @@ sub lru_size {
 
 =head1 NAME
 
-Tie::Cache::LRU::Expires - An expiring LRU cache.
+Tie::Cache::LRU::Expires - Extends Tie::Cache::LRU with expiring
 
 =head1 SYNOPSIS
 
@@ -151,13 +151,17 @@ they wouldn't be referenced) be refreshed.
 NB! If entries keep being referenced and are expired, but never refreshed,
 they will never leave the LRU!
 
+=head1 SEE ALSO
+
+L<Tie::Cache::LRU>.
+
 =head1 USAGE
 
 See SYNOPSIS. Too simple to explain.
 
 =head1 AUTHOR
 
-Hans Dijkema <hans@oesterholt-dijkema.emailt.nl>
+Hans Oesterholt-Dijkema <oesterhol@cpan.org>
 
 =cut
 

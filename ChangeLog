@@ -1,3 +1,6 @@
+0.53 -- Documentation change. Email address has changed, last name has
+	changed.
+
 0.52 -- On advise of Michael G Schwern, I've changed the tie interface
         to Tie::Cache::LRU used in Tie::Cache::LRU::Expires in an object 
         interface (seems to be twice as fast).
