@@ -1,5 +1,9 @@
-0.51 -- Well, I had to cope with version 0.21 of Tie::Cache::LRU.
-        I require this module to use it now.
+0.52 -- On advise of Michael G Schwern, I've changed the tie interface
+        to Tie::Cache::LRU used in Tie::Cache::LRU::Expires in an object 
+        interface (seems to be twice as fast).
+
+0.51 -- Because of a detected memory leak in v0.20 of Tie::Cache::LRU, i've
+        had to make this module dependend on v0.21 of Tie::Cache::LRU.
 
 0.50 -- Initial version
 

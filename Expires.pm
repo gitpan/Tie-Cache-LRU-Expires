@@ -5,7 +5,7 @@ use Tie::Cache::LRU 0.21;
 
 use vars qw($VERSION);
 
-$VERSION="0.51";
+$VERSION="0.52";
 
 sub TIEHASH {
   my $class = shift;
@@ -27,7 +27,7 @@ sub FETCH {
   my $self =shift;
   my $key  =shift;
 
-  my $value=$self->{LRU}{$key};
+  my $value=$self->{LRUOBJ}->FETCH($key);
 
   if (defined $value) {
     my $curtime=time();
@@ -53,15 +53,15 @@ sub STORE {
     BORDER  => time()+$self->{EXPIRES}
   };
 
-  $self->{LRU}{$key}=$value;
+  $self->{LRUOBJ}->STORE($key,$value);
 return $val;
 }
 
 sub DELETE {
   my $self = shift;
   my $key  = shift;
-  
-  delete $self->{LRU}{$key};
+
+  $self->{LRUOBJ}->DELETE($key);
 return undef;
 }
 
@@ -79,9 +79,9 @@ sub DESTROY {
 sub EXISTS {
   my $self = shift;
   my $key  = shift;
-  if (exists $self->{LRU}{$key}) {
+  if ($self->{LRUOBJ}->EXISTS($key)) {
     my $curtime=time();
-    my $value=$self->{LRU}{$key};
+    my $value=$self->{LRUOBJ}->FETCH($key);
     if ($curtime <= $value->{BORDER}) {
       return 1;
     }
@@ -120,7 +120,7 @@ Tie::Cache::LRU::Expires - An expiring LRU cache.
         for(1000..1500) {
            $cache{$_}="test $_";
         }
-        
+
         print $cache_obj->lru_size(),"\n";		# access to the
 							# number of entries
 							# used in the LRU
