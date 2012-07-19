@@ -1,3 +1,4 @@
+LICENSE
 Expires.pm
 test.pl
 MANIFEST
@@ -5,3 +6,4 @@ Makefile.PL
 README
 ChangeLog
 
+META.yml                                 Module meta-data (added by MakeMaker)

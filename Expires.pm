@@ -5,7 +5,7 @@ use Tie::Cache::LRU 0.21;
 
 use vars qw($VERSION);
 
-$VERSION="0.54";
+$VERSION="0.55";
 
 sub TIEHASH {
   my $class = shift;
@@ -173,6 +173,10 @@ See SYNOPSIS. Too simple to explain.
 =head1 AUTHOR
 
 Hans Oesterholt-Dijkema <oesterhol@cpan.org>
+
+=head1 LICENSE
+
+Artistic
 
 =cut
 
